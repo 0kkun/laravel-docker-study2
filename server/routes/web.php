@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/ajaxtest', 'AjaxController@index')->name('ajax.index');
+Route::post('/ajaxtest', 'AjaxController@ajax_post');
