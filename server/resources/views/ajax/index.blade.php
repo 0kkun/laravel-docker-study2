@@ -8,18 +8,16 @@
 
 <body>
 <script src="{{ asset('/js/ajax/ajax.js') }}"></script>
-<h1>This is ajax sample</h1>
-
+<h1>Sample</h1>
 
   <p>{{ $msg }}</p>
-  <p>{{ $test }}</p>
-  <div id="example">【 以下、ajax_getの結果 】</div>
   
-
+  <div id="ajax-data">【 以下、ajax_postの結果 】</div>
+  
   <script>
+    // グローバル変数を定義し、その中にコントローラから受け取った変数を格納する
     window.laravel = {};
-    window.laravel.msg = @json($msg);
-
+    window.laravel.response = @json($response_for_ajax);
   </script>
 </body>
 

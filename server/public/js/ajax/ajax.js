@@ -10,12 +10,14 @@ $(function(){
     datatype: 'json', //
     contentType: "application/json; charset=utf-8",
     url: '/ajaxtest', // postのレスポンス先
-    data: window.laravel.msg,
+    // コントローラから変数をビューに渡し、それをここで受け取る。
+    // これをresponseとしてコントローラに渡し、非同期処理を実行する
+    data: window.laravel.response,
   })
-  .done(function(data){ //ajaxの通信に成功した場合
-    alert("success!");
-    $("#example").append('<p>status : ' + data['status'] + '</p>');
-    $("#example").append('<p>message : ' + data['message'] + '</p>');
+  .done(function(data){ //ajax通信に成功(コントローラに無事データをpost)した場合
+    alert("ajax connection is success!");
+    $("#ajax-data").append('<p>status : ' + data['status'] + '</p>');
+    $("#ajax-data").append('<p>message : ' + data['message'] + '</p>');
     console.log(data['status']);
     console.log(data['message']);
   })

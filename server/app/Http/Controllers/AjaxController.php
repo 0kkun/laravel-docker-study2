@@ -11,14 +11,20 @@ class AjaxController extends Controller
 
     public function index()
     {
-        $msg = 'show people record';
-        $test = 'プライベート';
+        $msg = 'This is ajax sample for post';
 
-        return view('ajax.index', [ 'msg' => $msg, 'test'=>$test ]);
+        $response_for_ajax = array();
+        $response_for_ajax["status"] = "ajax status = OK!";
+        $response_for_ajax["message"] = 'This message from ajax!';
+
+
+        return view('ajax.index', compact('msg','test','response_for_ajax'));
     }
 
     public function ajax_post(Request $request)
     {
+        // 配列に格納し、index.blade.phpにjson形式で送る
+        // array = [ status => "", message => "" ]
         $response = array();
         $response["status"] = "ajax status = OK!";
         $response["message"] = 'This message from ajax!';
