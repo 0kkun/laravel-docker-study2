@@ -17,4 +17,4 @@
 
 
 Route::get('/ajaxtest', 'AjaxController@index')->name('ajax.index');
-Route::post('/ajaxtest', 'AjaxController@ajax_post');
+Route::post('/ajaxtest/ajax_post', 'AjaxController@ajax_post');

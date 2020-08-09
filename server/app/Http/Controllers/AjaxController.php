@@ -3,31 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class AjaxController extends Controller
 {
-    private $test;
 
+    /*
+    * コントローラからビューにデータを渡し、それをJSが受け取り、
+    * JSからコントローラに渡す。
+    * さらにそれを受け取ったコントローラからJSのdoneにデータを送る
+    */
     public function index()
     {
         $msg = 'This is ajax sample for post';
 
-        $response_for_ajax = array();
-        $response_for_ajax["status"] = "ajax status = OK!";
-        $response_for_ajax["message"] = 'This message from ajax!';
+        // ビューに送り、ajaxに渡す用のデータ
+        $send_to_ajax['status'] = "ajax status = OK!";
+        $send_to_ajax['message'] = 'This message from ajax!';
 
-
-        return view('ajax.index', compact('msg','test','response_for_ajax'));
+        return view('ajax.index', compact('msg','send_to_ajax'));
     }
 
     public function ajax_post(Request $request)
     {
-        // 配列に格納し、index.blade.phpにjson形式で送る
-        // array = [ status => "", message => "" ]
-        $response = array();
-        $response["status"] = "ajax status = OK!";
-        $response["message"] = 'This message from ajax!';
-        return response()->json($response);
+        // jsから受け取ったデータを変数に格納
+        $response_to_js = $request->all();
+
+        // ajax.jsのdoneのdataにjson形式で送る
+        return response()->json($response_to_js);
     }
 }

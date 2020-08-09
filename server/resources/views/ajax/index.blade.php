@@ -11,13 +11,15 @@
 <h1>Sample</h1>
 
   <p>{{ $msg }}</p>
-  
+
   <div id="ajax-data">【 以下、ajax_postの結果 】</div>
   
   <script>
-    // グローバル変数を定義し、その中にコントローラから受け取った変数を格納する
+    // グローバル変数を定義し、その中にコントローラから受け取った変数を格納し、JSに送る
     window.laravel = {};
-    window.laravel.response = @json($response_for_ajax);
+    window.laravel.response = @json($send_to_ajax);
+    console.log('ビュー時点 : ' + laravel.response['status']);
+    console.log('ビュー時点 : ' + laravel.response['message']);
   </script>
 </body>
 
