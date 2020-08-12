@@ -16,5 +16,5 @@
 // });
 
 
-Route::get('/ajaxtest', 'AjaxController@index')->name('ajax.index');
-Route::post('/ajaxtest/ajax_post', 'AjaxController@ajax_post');
+Route::get('/ajax-sample', 'AjaxController@index')->name('ajax.index');
+Route::post('/ajax-sample/ajax_post', 'AjaxController@ajax_post');

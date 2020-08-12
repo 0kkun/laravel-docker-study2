@@ -1,14 +1,14 @@
 
 $(function(){
-　$.ajaxSetup({
-  　　headers: {
-  　　　'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  　　}
-  　});
+  $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
   $.ajax({
     type: 'post', // GETかPOST。getはユーザの入力とかを得たい時。postはサーバーからの情報を出力したい時。
     datatype: 'json',
-    url: '/ajaxtest/ajax_post', // postのレスポンス先
+    url: '/ajax-sample/ajax_post', // postのレスポンス先
     data: window.laravel.response, // サーバー側(コントローラ)が受け取るリクエストパラメータ
   })
   .done(function(data){ //ajax通信に成功(コントローラに無事データをpost)した場合
