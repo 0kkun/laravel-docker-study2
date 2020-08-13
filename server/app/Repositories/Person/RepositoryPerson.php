@@ -3,6 +3,7 @@
 namespace App\Repositories\Person;
 
 use App\Models\Person;
+use Illuminate\Support\Collection;
 
 class RepositoryPerson implements RepositoryPersonInterface
 {
@@ -12,7 +13,7 @@ class RepositoryPerson implements RepositoryPersonInterface
     * @param object $person
     */
     public function __construct(
-        User $person
+        Person $person
     )
     {
         $this->person = $person;
@@ -21,11 +22,13 @@ class RepositoryPerson implements RepositoryPersonInterface
     /**
      * 名前で1レコードを取得
      *
-     * @var $name
-     * @return object
+     * @var string $name
+     * @return Collection
      */
-    public function getFirstRecordByName($name)
+    public function getFirstRecordByName(string $name): Collection
     {
-        return $this->person->where('name', '=', $name)->first();
+        return $this->person
+                    ->where('name', '=', $name)
+                    ->get();
     }
 }
