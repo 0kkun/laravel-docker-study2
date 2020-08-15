@@ -20,23 +20,28 @@ class HelloTest extends TestCase
     }
 
     /**
-     * indexページのステータスコードがちゃんと200であるかテスト
+     * indexページのHTTPステータスコード200が返されることをテスト
      * メソッド名にはtestをつけることがルール
      * アサーションメソッドは、テスト実行時に期待した値と実際の値が同じになっているかどうか確認するメソッド
      * 実行コマンド：vendor/bin/phpunit tests/Unit/HelloTest.php
-     * @return void
      */
-    public function testIndexStatus()
+    public function testStatusCode()
     {
         $response = $this->get('/');
         $response->assertStatus(200);
+        $this->assertTrue(true);
+    }
+
+    // トップ画面検証テスト
+    public function testBody()
+    {
+        $response = $this->get('/');
+        $response->assertSeeText("入力フォーム");
     }
 
     /**
      * Eloquentテスト
      * getFirstRecordByNameメソッドのテスト
-     * 
-     * @return void
      */
     public function testGetFirstRecordByName()
     {
@@ -45,4 +50,5 @@ class HelloTest extends TestCase
         $result = $this->person_repository->getFirstRecordByName($param);
         $this->assertEquals($result[0]->age, $expected);
     }
+
 }
