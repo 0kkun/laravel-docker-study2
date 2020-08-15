@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquents;
 use App\Models\Person;
 use App\Repositories\Contracts\PersonRepository;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 class EloquentPersonRepository implements PersonRepository
 {
@@ -37,5 +38,24 @@ class EloquentPersonRepository implements PersonRepository
     {
         return $this->person_repository
                     ->get();
+    }
+
+    /**
+     * レコード保存
+     *
+     * @var Collection $data
+     * @return Collection
+     */
+    public function createPerson($data): void
+    {
+        // モデルインスタンスにはfillが使える
+        $this->person_repository->fill([
+            'name' => $data['name'],
+            'age' => $data['age'],
+            'created_at' => $data['created_at'],
+            'updated_at' => $data['updated_at'],
+        ]);
+
+        $this->person_repository->save();
     }
 }

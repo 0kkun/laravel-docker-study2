@@ -20,4 +20,10 @@ interface PersonRepository
      * @return Collection
      */  
     public function getAll(): Collection;
+
+    /**
+     * レコードを保存
+     *
+     */  
+    public function createPerson($data): void;
 }
