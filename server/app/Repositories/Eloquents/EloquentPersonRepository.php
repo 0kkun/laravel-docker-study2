@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Repositories\Person;
+namespace App\Repositories\Eloquents;
 
 use App\Models\Person;
+use App\Repositories\Contracts\PersonRepository;
 use Illuminate\Support\Collection;
 
-class RepositoryPerson implements RepositoryPersonInterface
+class EloquentPersonRepository implements PersonRepository
 {
-    protected $person;
+    protected $person_repository;
 
     /**
     * @param object $person
     */
     public function __construct(
-        Person $person
+        Person $person_repository
     )
     {
-        $this->person = $person;
+        $this->person_repository = $person_repository;
     }
 
     /**
@@ -27,8 +28,14 @@ class RepositoryPerson implements RepositoryPersonInterface
      */
     public function getFirstRecordByName(string $name): Collection
     {
-        return $this->person
+        return $this->person_repository
                     ->where('name', '=', $name)
+                    ->get();
+    }
+
+    public function getAll(): Collection
+    {
+        return $this->person_repository
                     ->get();
     }
 }

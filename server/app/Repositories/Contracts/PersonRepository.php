@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Person;
+namespace App\Repositories\Contracts;
 
 use Illuminate\Support\Collection;
 
-interface RepositoryPersonInterface
+interface PersonRepository
 {
     /**
      * Nameで1レコードを取得
@@ -13,4 +13,11 @@ interface RepositoryPersonInterface
      * @return Collection
      */
     public function getFirstRecordByName(string $name): Collection;
+
+    /**
+     * 全レコードを取得
+     *
+     * @return Collection
+     */  
+    public function getAll(): Collection;
 }
