@@ -1,33 +1,29 @@
-<html>
+@extends('layout')
 
-<head>
-  <title>hello</title>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <style>
-    th { background-color: #999; color: fff; padding: 5px 10px; }
-    td { border: solid 1px #aaa; color: #999; padding: 5px 10px; }
-  </style>
-<head>
+@section('content')
+  <div class="container">
+    <h1>Sample Page</h1>
+    <form action="{{ url('/search')}}" method="post">
+      {{ csrf_field()}}
+      {{ method_field('get') }}
+      <div class="h4">入力フォーム</div>
+      <div class="form-group col-md-9 mb-5">
+        <input type="text" class="form-control" placeholder="検索したい名前を入力してください" name="name">
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">検索</button>
+      </div>
+    </form>
 
-<body>
-<h1>Hello</h1>
-
-  @foreach($items as $item)
-    {{ $item->name }}
-  @endforeach
-
-  <table class="table">
-    <tr>
-      <th>id</th><th>name</th>
-    </tr>
-    @foreach($all_items as $item)
-    <tr>
-      <td>{{ $item->id }}</td><td>{{ $item->name }}</td>
-    </tr>
-    @endforeach
-  </table>
-
-</body>
-
-</html>
+    <table class="table">
+      <tr>
+        <th>id</th><th>name</th>
+      </tr>
+      @foreach($all_items as $item)
+      <tr>
+        <td>{{ $item->id }}</td><td>{{ $item->name }}</td>
+      </tr>
+      @endforeach
+    </table>
+  </div>
+@endsection

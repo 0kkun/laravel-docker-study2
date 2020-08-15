@@ -1,0 +1,16 @@
+/* Bootstrap と Bootstrap にさらにスタイルを足した Bootflat を使って見た目を整えてい */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css');
+
+body {
+  background-color: #f4f7f8;
+}
+th {
+  background-color: #999;
+  color: fff; padding: 5px 10px;
+}
+td {
+  border: solid 1px #aaa;
+  color: #999; 
+  padding: 5px 10px;
+}
