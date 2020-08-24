@@ -1,7 +1,8 @@
 up:
 		docker-compose up -d
 build:
-		docker-compose build
+		# Dockerfileの変更したらやること
+		docker-compose -d build
 create-project:
 		# docker-compose up -d --build
 		# docker-compose exec app composer create-project --prefer-dist laravel/laravel .
@@ -64,3 +65,6 @@ npm:
 yarn:
 		docker-compose exec node yarn
 		docker-compose exec node yarn run dev
+logs:
+		# アプリのログを見る
+		docker-compose logs -f --tail="5" -t
