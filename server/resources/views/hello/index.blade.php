@@ -25,5 +25,20 @@
       </tr>
       @endforeach
     </table>
+
+
+    <div>
+      <h1>30歳以上の人</h1>
+      @foreach ($over_age_lists as $list)
+      <ul>
+        <li>{{$list->name}}</li>
+      </ul>
+      @endforeach
+
+
+    </div>
+
+
+
   </div>
 @endsection

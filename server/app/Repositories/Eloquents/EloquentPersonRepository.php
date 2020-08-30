@@ -34,6 +34,11 @@ class EloquentPersonRepository implements PersonRepository
                     ->get();
     }
 
+    /**
+     * 全レコード取得
+     *
+     * @return void
+     */
     public function getAll(): Collection
     {
         return $this->person_repository
@@ -44,7 +49,7 @@ class EloquentPersonRepository implements PersonRepository
      * レコード保存
      *
      * @var Collection $data
-     * @return Collection
+     * @return void
      */
     public function createPerson($data): void
     {
