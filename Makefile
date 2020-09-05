@@ -68,3 +68,4 @@ yarn:
 logs:
 		# アプリのログを見る
 		docker-compose logs -f --tail="5" -t
+

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Repositories\Contracts\PersonRepository;
 use App\Repositories\Eloquents\EloquentPersonRepository;
+use App\Http\Controllers\HelloController;
 
 class HelloTest extends TestCase
 {
@@ -16,7 +17,7 @@ class HelloTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->person_repository = app(EloquentPersonRepository::class);
+        // $this->person_repository = app(EloquentPersonRepository::class);
     }
 
     /**
@@ -33,22 +34,46 @@ class HelloTest extends TestCase
     }
 
     // トップ画面検証テスト
-    public function testBody()
-    {
-        $response = $this->get('/');
-        $response->assertSeeText("入力フォーム");
-    }
+    // public function testBody()
+    // {
+    //     $response = $this->get('/');
+    //     $response->assertSeeText("入力フォーム");
+    // }
 
     /**
      * Eloquentテスト
      * getFirstRecordByNameメソッドのテスト
      */
-    public function testGetFirstRecordByName()
-    {
-        $param = "鈴木太郎";
-        $expected = 26;
-        $result = $this->person_repository->getFirstRecordByName($param);
-        $this->assertEquals($result[0]->age, $expected);
-    }
+    // public function testGetFirstRecordByName()
+    // {
+    //     $param = "鈴木太郎";
+    //     $expected = 26;
+    //     $result = $this->person_repository->getFirstRecordByName($param);
+    //     $this->assertEquals($result[0]->age, $expected);
+    // }
+
+
+    /**
+     * Eloquentテスト
+     * getFirstRecordByNameメソッドのテスト
+     * データプロバイダーを利用したテスト
+     * @dataProvider dataProvider_for_GetFirstRecordByName
+     */
+    // public function testGetFirstRecordByName(int $expected, string $param)
+    // {
+    //     $result = $this->person_repository->getFirstRecordByName($param);
+    //     $this->assertEquals($result[0]->age, $expected);
+    // }
+
+    // public function dataProvider_for_GetFirstRecordByName(): array{
+    //     return [
+    //         // [期待値, 入力したいパラメータ]
+    //         '入力が鈴木太郎' => [26,'鈴木太郎'],
+    //         '入力が小玉 隆博' => [26,'小玉 隆博']
+    //     ];
+    // }
+
+
+
 
 }

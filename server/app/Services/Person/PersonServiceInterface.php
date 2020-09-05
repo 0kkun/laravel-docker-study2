@@ -9,9 +9,9 @@ use Carbon\Carbon;
 Interface PersonServiceInterface
 {
   /**
+   * 30才以上のユーザーを返す
    * 
-   * @param 
-   * @return
+   * @return Collection
    */
-  public function detective();
+  public function getAroundThirtyAge(): Collection;
 }

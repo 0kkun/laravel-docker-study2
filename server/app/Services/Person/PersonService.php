@@ -3,6 +3,7 @@
 namespace App\Services\Person;
 
 use App\Repositories\Contracts\PersonRepository;
+use Illuminate\Support\Collection;
 
 class PersonService implements PersonServiceInterface
 {
@@ -26,7 +27,7 @@ class PersonService implements PersonServiceInterface
    * 
    * @return Correction
    */
-  public function detective()
+  public function getAroundThirtyAge(): Collection
   {
     $people = $this->person_repository->getAll();
     $people = $people->where('age', '>=', 30);

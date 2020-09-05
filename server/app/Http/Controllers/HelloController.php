@@ -31,10 +31,20 @@ class HelloController extends Controller
 
         $all_items = $this->person_repository->getAll();
 
-        $over_age_lists = $this->person_service->detective();
+        $over_age_lists = $this->person_service->getAroundThirtyAge();
+
+        $test = $this->test(100);
 
 
 
         return view('hello.index', compact('items','all_items', 'over_age_lists'));
+    }
+
+    private function test(int $num)
+    {
+        $data = [
+            'input' => $num
+        ];
+        return $data;
     }
 }
